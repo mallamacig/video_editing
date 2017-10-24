@@ -16,13 +16,13 @@ audio_video_mix.export("output/audio_mix1/audio_video_mix.mp3", format="mp3")
 colonna_sonora = AudioSegment.from_mp3("resources/audio/Bumper_Tag.mp3")
 audio_video_mix = AudioSegment.from_mp3("output/audio_mix1/audio_video_mix.mp3")
 
-#il volume dell'audio della musica viene aumentato di 10db
-colonna_sonora_audio_alto = colonna_sonora + 10
+# viene abbassato il volume delle due tracce di 0.3db
+audio_video_mix_audio_basso = audio_video_mix-1
+colonna_sonora_audio_basso = colonna_sonora-1
 
 #all'audio dei due video viene aggiunta la musica  e viene creato il file .mp3 relativo
-audio_video = audio_video_mix.overlay(colonna_sonora_audio_alto, position=0000)
+audio_video = audio_video_mix_audio_basso.overlay(colonna_sonora_audio_basso, position=0000)
 audio_video.export("output/audio_mix1/audio_video.mp3", format="mp3")
-
 
 #recupera il file mp3 con il mix audio video + nuova musica
 audio_video = AudioFileClip("output/audio_mix1/audio_video.mp3")
